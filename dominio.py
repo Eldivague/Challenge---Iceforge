@@ -21,12 +21,17 @@ class Entidad:
         if self.__energia < 0: self.__energia = 0
         if self.__energia > 100: self.__energia = 100
 
+
 class Guerrero(Entidad):
     def habilidad_especial(self):
         if self.consultar_energia() >= 30:
             self.modificar_energia(-30)
             return 40
         return 0
+
+    def descansar(self):
+        self.modificar_energia(+25)
+
 
 class Mago(Entidad):
     def habilidad_especial(self):
@@ -35,9 +40,16 @@ class Mago(Entidad):
             return 60
         return 0
 
+    def descansar(self):
+        self.modificar_energia(+35)
+
+
 class Robot(Entidad):
     def habilidad_especial(self):
         if self.consultar_energia() >= 25:
             self.modificar_energia(-25)
             return 30
         return 0
+    
+    def descansar(self):
+        self.modificar_energia(+15)
