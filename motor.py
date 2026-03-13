@@ -15,7 +15,7 @@ class GameEngine:
         if self.rival.consultar_energia() >= 40:
             return self.rival.habilidad_especial()
         else:
-            return 10 # Ataque básico
+            return 10 
 
     def finalizar(self):
         return self.jugador.esta_vivo
@@ -55,4 +55,14 @@ class GameEngine:
             Interfaz.imprimir_mensaje(f"El rival te hizo {danio_ia} de daño.")
         else:
             Interfaz.imprimir_mensaje("¡Has derrotado al rival!")
-        
+    
+    
+    def iniciar_juego(self):
+        while self.jugador.consultar_vida() > 0 and self.rival.consultar_vida() > 0:
+            self.mostrar_estado()
+            self.batalla()
+
+        if self.jugador.consultar_vida() > 0:
+            print("¡GANASTE!")
+        else:
+            print("HAS SIDO DERROTADO...")
