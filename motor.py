@@ -1,7 +1,8 @@
-
+# Se llaman las clases necesarias
 from dominio import Guerrero, Mago, Robot
 from interfaz import Interfaz
 
+# Se crea la funcion para hacer correr el juego
 class GameEngine:
     def __init__(self, jugador, rival):
         self.jugador = jugador
@@ -10,16 +11,18 @@ class GameEngine:
     def mostrar_estado(self):
         print(f"\n[ {self.jugador.nombre} HP: {self.jugador.consultar_vida()} EN: {self.jugador.consultar_energia()} ] vs [ {self.rival.nombre} HP: {self.rival.consultar_vida()} EN: {self.rival.consultar_energia()} ]")
 
+    # Metodo para que el enemigo tome deciciones para el combate
     def ejecutar_turno_ia(self):
-        # Lógica de "pensamiento" del rival
+
         if self.rival.consultar_energia() >= 40:
             return self.rival.habilidad_especial()
         else:
             return 10 
-
+    # Metodo para saber si el jugador sigue vivo
     def finalizar(self):
         return self.jugador.esta_vivo
     
+    # Metodo estatico para poder elegir personaje antes de poder llamar a la clase
     @staticmethod
     def elegir_jugador():
         personaje_elegido = Interfaz.menu_clase()
@@ -34,6 +37,8 @@ class GameEngine:
         
         return heroe
     
+
+    # Metodo para hacer las batallas IA vs Jugador
     def batalla(self):
         accion_elegida = Interfaz.menu_acciones()
         danio = 0
@@ -53,16 +58,14 @@ class GameEngine:
             danio_ia = self.ejecutar_turno_ia()
             self.jugador.recibir_danio(danio_ia)
             Interfaz.imprimir_mensaje(f"El rival te hizo {danio_ia} de daño.")
-        else:
-            Interfaz.imprimir_mensaje("¡Has derrotado al rival!")
     
-    
+    # Metodo para iniciar el juego
     def iniciar_juego(self):
         while self.jugador.consultar_vida() > 0 and self.rival.consultar_vida() > 0:
             self.mostrar_estado()
             self.batalla()
 
         if self.jugador.consultar_vida() > 0:
-            print("¡GANASTE!")
+            Interfaz.ganar()
         else:
-            print("HAS SIDO DERROTADO...")
+            Interfaz.perder()

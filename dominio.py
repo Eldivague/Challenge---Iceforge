@@ -1,3 +1,5 @@
+
+# Creamos una clase de los personajes
 class Entidad:
     def __init__(self, nombre, vida, energia):
         if type(self) == Entidad:
@@ -7,6 +9,7 @@ class Entidad:
         self.__energia = energia
         self.esta_vivo = True
 
+    # hacemos la funcion de consultar vida ya que son atributos encapsulados
     def consultar_vida(self): return self.__vida
     def consultar_energia(self): return self.__energia
 
@@ -21,7 +24,7 @@ class Entidad:
         if self.__energia < 0: self.__energia = 0
         if self.__energia > 100: self.__energia = 100
 
-
+# Creamos las clases hijas que serian los personajes del juego
 class Guerrero(Entidad):
     def habilidad_especial(self):
         if self.consultar_energia() >= 30:

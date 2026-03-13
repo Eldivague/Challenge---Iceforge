@@ -1,4 +1,4 @@
-
+# Creamos la clase interfaz para todo lo que se va mostrar en la pantalla
 class Interfaz:    
     
     @staticmethod
@@ -19,7 +19,7 @@ class Interfaz:
 
     @staticmethod
     def ganar():
-        print(" has ganado a ROBOT CENTINELA X9 !!! ")
+        print(" Has ganado a ROBOT CENTINELA X9 !!! ")
 
     @staticmethod
     def imprimir_mensaje(msg):
