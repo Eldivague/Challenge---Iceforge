@@ -4,7 +4,7 @@ from motor import GameEngine
 
 # Se crean los personajes para iniciar el juego
 heroe = GameEngine.elegir_jugador()
-rival = Robot("Centinela", 200, 80)
+rival = Robot("ROBOT CENTINELA X9", 200, 80)
 juego = GameEngine(heroe, rival)
 
 # Se inicia el juego
